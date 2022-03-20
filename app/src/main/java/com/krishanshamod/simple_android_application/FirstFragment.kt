@@ -34,7 +34,11 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             binding.apply {
-                userID = editTextNumber.text.toString().toInt()
+                try {
+                    userID = editTextNumber.text.toString().toInt()
+                } catch (e: Exception) {
+                    userID = 0
+                }
             }
 
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

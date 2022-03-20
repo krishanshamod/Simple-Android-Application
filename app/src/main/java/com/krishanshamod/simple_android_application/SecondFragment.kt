@@ -39,8 +39,12 @@ class SecondFragment : Fragment() {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 val body = response.body()
 
-                body?.let {
-                    binding.textView.text = it.email
+                body.let {
+                    if (it != null) {
+                        binding.textView.text = it.email
+                    } else {
+                        binding.textView.text = "Please enter valid user ID"
+                    }
                 }
             }
 
