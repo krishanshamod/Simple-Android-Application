@@ -44,7 +44,8 @@ class FirstFragment : Fragment() {
                     findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
 
                 } catch (e: Exception) {
-                    // will update in the future
+                    // Show enter again msg if user doesn't input anything
+                    binding.textView2.text = "Please enter a user ID"
                 }
             }
         }

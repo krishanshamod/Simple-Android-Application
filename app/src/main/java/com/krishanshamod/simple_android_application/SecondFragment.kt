@@ -40,11 +40,13 @@ class SecondFragment : Fragment() {
                 val body = response.body()
 
                 body.let {
-                    // Show user email or error if ID is not valid
+                    // Show user details or error if ID is not valid
                     if (it != null) {
-                        binding.textView.text = it.email
+                        binding.textViewName.text = it.name
+                        binding.textViewEmail.text = it.email
+                        binding.textViewWebsite.text = it.website
                     } else {
-                        binding.textView.text = "Please enter valid user ID"
+                        binding.textViewError.text = "Please enter valid user ID"
                     }
                 }
             }
