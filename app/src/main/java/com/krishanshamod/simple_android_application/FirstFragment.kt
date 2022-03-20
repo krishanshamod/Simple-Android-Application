@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.krishanshamod.simple_android_application.databinding.FragmentFirstBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    companion object {
+        public var userID: Int = 0
+            get() = field
+    }
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -33,6 +33,10 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
+            binding.apply {
+                userID = editTextNumber.text.toString().toInt()
+            }
+
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
