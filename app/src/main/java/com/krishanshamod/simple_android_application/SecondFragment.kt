@@ -1,7 +1,6 @@
 package com.krishanshamod.simple_android_application
 
 import android.os.Bundle
-import android.provider.CalendarContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +32,7 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Get user details from the server
         val user = userAPIService.getUser(FirstFragment.userID.toString())
 
         user.enqueue(object: Callback<User> {
@@ -40,6 +40,7 @@ class SecondFragment : Fragment() {
                 val body = response.body()
 
                 body.let {
+                    // Show user email or error if ID is not valid
                     if (it != null) {
                         binding.textView.text = it.email
                     } else {
@@ -49,7 +50,7 @@ class SecondFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-
+                // will update in the future
             }
         })
 

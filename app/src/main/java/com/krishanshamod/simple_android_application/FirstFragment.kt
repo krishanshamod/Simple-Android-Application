@@ -12,6 +12,7 @@ class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
+    // To pass the ID from here to the fragment two easily
     companion object {
         public var userID: Int = 0
             get() = field
@@ -34,14 +35,18 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             binding.apply {
+                // Handled the error if user doesn't input anything
                 try {
+                    // Get the input from the user
                     userID = editTextNumber.text.toString().toInt()
+
+                    // Navigate to the fragment two if user entered any value
+                    findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
                 } catch (e: Exception) {
-                    userID = 0
+                    // will update in the future
                 }
             }
-
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
 
